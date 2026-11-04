@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إلى مشيرة ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+    background:
+        radial-gradient(circle at top, #54234d, #1a1029 60%, #080611);
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    margin: auto;
+    padding: 55px 0;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    font-size: clamp(50px, 12vw, 90px);
+    color: #ffd4e9;
+    text-shadow: 0 0 20px #ff70b7;
+    margin: 25px 0;
+}
+
+.heart {
+    color: #ff5d9e;
+    animation: heartbeat 1.5s infinite;
+    display: inline-block;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.subtitle {
+    font-size: 19px;
+    line-height: 2;
+    color: #f8d9ee;
+}
+
+.card {
+    margin-top: 35px;
+    padding: 30px 22px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+}
+
+.message {
+    font-size: 19px;
+    line-height: 2.2;
+    min-height: 90px;
+    margin-bottom: 25px;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 14px 25px;
+    margin: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    color: #35152c;
+    background: linear-gradient(135deg, #ffd2eb, #ff85bd);
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ff85bd66;
+}
+
+.secondary {
+    background: transparent;
+    color: white;
+    border: 1px solid #ffffff55;
+}
+
+.hidden {
+    display: none;
+}
+
+#secret {
+    margin-top: 25px;
+    line-height: 2.2;
+    font-size: 20px;
+    color: #ffd4e9;
+}
+
+footer {
+    margin-top: 40px;
+    color: #c6a9c9;
+    font-size: 13px;
+}
+
+#hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="hearts"></canvas>
+
+<div class="container">
+
+    <div class="subtitle">
+        رسالة صغيرة لشخص مش صغير عندي
+    </div>
+
+    <h1>
+        مشيرة
+        <span class="heart">♥</span>
+    </h1>
+
+    <div class="subtitle">
+        في حكايات بتبدأ بكلمة...
+        <br>
+        وحكايتنا لسه كل يوم بيكتب فيها سطر جديد.
+    </div>
+
+    <div class="card">
+
+        <div class="message" id="message">
+            مشيرة، فاكرة أول مرة اتكلمنا فيها؟
+            <br>
+            يمكن وقتها ماكنّاش نعرف إن الكلام ده
+            هيوصلنا لهنا...
+        </div>
+
+        <button id="start" onclick="startStory()">
+            افتحي حكايتنا ❤️
+        </button>
+
+        <button id="next" class="hidden" onclick="nextPage()">
+            كمّلي الحكاية
+        </button>
+
+        <button id="surprise" class="hidden" onclick="showSecret()">
+            فيه رسالة سرية ليكي ✨
+        </button>
+
+        <div id="secret" class="hidden">
+            أنا مش عايز أعيش معاكي اللحظات الحلوة بس...
+            <br>
+            أنا عايز أعيش الحكاية كلها،
+            بكل تفاصيلها،
+            <br>
+            وأفضل كل يوم أختارك من جديد.
+            <span class="heart">♥</span>
+            <br><br>
+            <small>— ليكي إنتِ، يا مشيرة</small>
+        </div>
+
+        <br>
+
+        <button class="secondary" onclick="toggleMusic()">
+            ♪ تشغيل الموسيقى
+        </button>
+
+        <audio id="music" loop>
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+
+    </div>
+
+    <footer>
+        صُنعت بحب...
+        ومش محتاجة مناسبة عشان أقولك إنك غالية ❤️
+    </footer>
+
+</div>
+
+<script>
+
+const pages = [
+
+    "من أول كلامنا، كان فيه حاجة مختلفة... حاجة خلتني أحب أسمعك، وأعرف عنك أكتر، وأستنى كلامنا.",
+
+    "وبعدين بقيتِ مش مجرد حد بحب أتكلم معاه... بقيتي حد وجوده بيخلّي اليوم أحنّ، واللحظات العادية ليها معنى.",
+
+    "يمكن مش كل حاجة في الحكاية سهلة، ويمكن لسه قدامنا تفاصيل كتير... بس فيه حاجة أنا متأكد منها: إنتِ بقيتي جزء جميل من أيامي.",
+
+    "وعشان كده حبيت أعملك الصفحة دي... مش عشان أقول كلام كبير، لكن عشان أسيبلك ذكرى صغيرة ترجعيلها وتبتسمي."
+
+];
+
+let currentPage = 0;
+
+function startStory() {
+
+    document.getElementById("start").classList.add("hidden");
+
+    document.getElementById("message").innerText = pages[0];
+
+    document.getElementById("next").classList.remove("hidden");
+
+    currentPage = 0;
+
+}
+
+function nextPage() {
+
+    currentPage++;
+
+    if (currentPage < pages.length) {
+
+        document.getElementById("message").innerText =
+            pages[currentPage];
+
+    }
+
+    if (currentPage === pages.length - 1) {
+
+        document.getElementById("next").classList.add("hidden");
+
+        document.getElementById("surprise").classList.remove("hidden");
+
+    }
+
+}
+
+function showSecret() {
+
+    document.getElementById("secret").classList.remove("hidden");
+
+    document.getElementById("surprise").classList.add("hidden");
+
+}
+
+function toggleMusic() {
+
+    const music = document.getElementById("music");
+
+    if (music.paused) {
+
+        music.play();
+
+    } else {
+
+        music.pause();
+
+    }
+
+}
+
+// قلوب متحركة في الخلفية
+
+const canvas = document.getElementById("hearts");
+
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function resize() {
+
+    canvas.width = window.innerWidth;
+
+    canvas.height = window.innerHeight;
+
+    particles = [];
+
+    for (let i = 0; i < 40; i++) {
+
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 20 + 8,
+            speed: Math.random() * 1 + 0.3
+        });
+
+    }
+
+}
+
+function animate() {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+
+        ctx.globalAlpha = 0.4;
+
+        ctx.fillStyle = "#ff8ac7";
+
+        ctx.font = p.size + "px Arial";
+
+        ctx.fillText("♥", p.x, p.y);
+
+        p.y -= p.speed;
+
+        if (p.y < -20) {
+
+            p.y = canvas.height + 20;
+
+            p.x = Math.random() * canvas.width;
+
+        }
+
+    });
+
+    requestAnimationFrame(animate);
+
+}
+
+window.addEventListener("resize", resize);
+
+resize();
+
+animate();
+
+</script>
+
+</body>
+</html>
