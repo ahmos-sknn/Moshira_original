@@ -1,0 +1,103 @@
+<p><br />&lt;!DOCTYPE html&gt;<br />&lt;html lang="ar" dir="rtl"&gt;<br />&lt;head&gt;<br />&lt;meta charset="UTF-8"&gt;<br />&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br />&lt;title&gt;إلى مشيرة ❤️&lt;/title&gt;</p>
+<p>&lt;style&gt;<br />* {<br /> box-sizing: border-box;<br />}</p>
+<p>body {<br /> margin: 0;<br /> min-height: 100vh;<br /> overflow-x: hidden;<br /> font-family: Tahoma, Arial, sans-serif;<br /> color: white;<br /> background:<br /> radial-gradient(circle at top, #54234d, #1a1029 60%, #080611);<br /> text-align: center;<br />}</p>
+<p>.container {<br /> width: 90%;<br /> max-width: 700px;<br /> margin: auto;<br /> padding: 55px 0;<br /> position: relative;<br /> z-index: 2;<br />}</p>
+<p>h1 {<br /> font-size: clamp(50px, 12vw, 90px);<br /> color: #ffd4e9;<br /> text-shadow: 0 0 20px #ff70b7;<br /> margin: 25px 0;<br />}</p>
+<p>.heart {<br /> color: #ff5d9e;<br /> animation: heartbeat 1.5s infinite;<br /> display: inline-block;<br />}</p>
+<p>@keyframes heartbeat {<br /> 0%, 100% { transform: scale(1); }<br /> 50% { transform: scale(1.2); }<br />}</p>
+<p>.subtitle {<br /> font-size: 19px;<br /> line-height: 2;<br /> color: #f8d9ee;<br />}</p>
+<p>.card {<br /> margin-top: 35px;<br /> padding: 30px 22px;<br /> border-radius: 25px;<br /> background: rgba(255,255,255,0.07);<br /> border: 1px solid rgba(255,255,255,0.15);<br /> box-shadow: 0 10px 40px rgba(0,0,0,0.3);<br /> backdrop-filter: blur(10px);<br />}</p>
+<p>.message {<br /> font-size: 19px;<br /> line-height: 2.2;<br /> min-height: 90px;<br /> margin-bottom: 25px;<br />}</p>
+<p>button {<br /> border: none;<br /> border-radius: 30px;<br /> padding: 14px 25px;<br /> margin: 8px;<br /> font-size: 16px;<br /> font-family: inherit;<br /> cursor: pointer;<br /> color: #35152c;<br /> background: linear-gradient(135deg, #ffd2eb, #ff85bd);<br /> transition: 0.3s;<br />}</p>
+<p>button:hover {<br /> transform: scale(1.05);<br /> box-shadow: 0 0 20px #ff85bd66;<br />}</p>
+<p>.secondary {<br /> background: transparent;<br /> color: white;<br /> border: 1px solid #ffffff55;<br />}</p>
+<p>.hidden {<br /> display: none;<br />}</p>
+<p>#secret {<br /> margin-top: 25px;<br /> line-height: 2.2;<br /> font-size: 20px;<br /> color: #ffd4e9;<br />}</p>
+<p>footer {<br /> margin-top: 40px;<br /> color: #c6a9c9;<br /> font-size: 13px;<br />}</p>
+<p>#hearts {<br /> position: fixed;<br /> inset: 0;<br /> pointer-events: none;<br /> z-index: 1;<br />}<br />&lt;/style&gt;<br />&lt;/head&gt;</p>
+<p>&lt;body&gt;</p>
+<p>&lt;canvas id="hearts"&gt;&lt;/canvas&gt;</p>
+<p>&lt;div class="container"&gt;</p>
+<p>&lt;div class="subtitle"&gt;<br /> رسالة صغيرة لشخص مش صغير عندي<br /> &lt;/div&gt;</p>
+<p>&lt;h1&gt;<br /> مشيرة<br /> &lt;span class="heart"&gt;♥&lt;/span&gt;<br /> &lt;/h1&gt;</p>
+<p>&lt;div class="subtitle"&gt;<br /> في حكايات بتبدأ بكلمة...<br /> &lt;br&gt;<br /> وحكايتنا لسه كل يوم بيكتب فيها سطر جديد.<br /> &lt;/div&gt;</p>
+<p>&lt;div class="card"&gt;</p>
+<p>&lt;div class="message" id="message"&gt;<br /> مشيرة، فاكرة أول مرة اتكلمنا فيها؟<br /> &lt;br&gt;<br /> يمكن وقتها ماكنّاش نعرف إن الكلام ده<br /> هيوصلنا لهنا...<br /> &lt;/div&gt;</p>
+<p>&lt;button id="start" onclick="startStory()"&gt;<br /> افتحي حكايتنا ❤️<br /> &lt;/button&gt;</p>
+<p>&lt;button id="next" class="hidden" onclick="nextPage()"&gt;<br /> كمّلي الحكاية<br /> &lt;/button&gt;</p>
+<p>&lt;button id="surprise" class="hidden" onclick="showSecret()"&gt;<br /> فيه رسالة سرية ليكي ✨<br /> &lt;/button&gt;</p>
+<p>&lt;div id="secret" class="hidden"&gt;<br /> أنا مش عايز أعيش معاكي اللحظات الحلوة بس...<br /> &lt;br&gt;<br /> أنا عايز أعيش الحكاية كلها،<br /> بكل تفاصيلها،<br /> &lt;br&gt;<br /> وأفضل كل يوم أختارك من جديد.<br /> &lt;span class="heart"&gt;♥&lt;/span&gt;<br /> &lt;br&gt;&lt;br&gt;<br /> &lt;small&gt;— ليكي إنتِ، يا مشيرة&lt;/small&gt;<br /> &lt;/div&gt;</p>
+<p>&lt;br&gt;</p>
+<p>&lt;button class="secondary" onclick="toggleMusic()"&gt;<br /> ♪ تشغيل الموسيقى<br /> &lt;/button&gt;</p>
+<p>&lt;audio id="music" loop&gt;<br /> &lt;source src="music.mp3" type="audio/mpeg"&gt;<br /> &lt;/audio&gt;</p>
+<p>&lt;/div&gt;</p>
+<p>&lt;footer&gt;<br /> صُنعت بحب...<br /> ومش محتاجة مناسبة عشان أقولك إنك غالية ❤️<br /> &lt;/footer&gt;</p>
+<p>&lt;/div&gt;</p>
+<p>&lt;script&gt;</p>
+<p>const pages = [</p>
+<p>"من أول كلامنا، كان فيه حاجة مختلفة... حاجة خلتني أحب أسمعك، وأعرف عنك أكتر، وأستنى كلامنا.",</p>
+<p>"وبعدين بقيتِ مش مجرد حد بحب أتكلم معاه... بقيتي حد وجوده بيخلّي اليوم أحنّ، واللحظات العادية ليها معنى.",</p>
+<p>"يمكن مش كل حاجة في الحكاية سهلة، ويمكن لسه قدامنا تفاصيل كتير... بس فيه حاجة أنا متأكد منها: إنتِ بقيتي جزء جميل من أيامي.",</p>
+<p>"وعشان كده حبيت أعملك الصفحة دي... مش عشان أقول كلام كبير، لكن عشان أسيبلك ذكرى صغيرة ترجعيلها وتبتسمي."</p>
+<p>];</p>
+<p>let currentPage = 0;</p>
+<p>function startStory() {</p>
+<p>document.getElementById("start").classList.add("hidden");</p>
+<p>document.getElementById("message").innerText = pages[0];</p>
+<p>document.getElementById("next").classList.remove("hidden");</p>
+<p>currentPage = 0;</p>
+<p>}</p>
+<p>function nextPage() {</p>
+<p>currentPage++;</p>
+<p>if (currentPage &lt; pages.length) {</p>
+<p>document.getElementById("message").innerText =<br /> pages[currentPage];</p>
+<p>}</p>
+<p>if (currentPage === pages.length - 1) {</p>
+<p>document.getElementById("next").classList.add("hidden");</p>
+<p>document.getElementById("surprise").classList.remove("hidden");</p>
+<p>}</p>
+<p>}</p>
+<p>function showSecret() {</p>
+<p>document.getElementById("secret").classList.remove("hidden");</p>
+<p>document.getElementById("surprise").classList.add("hidden");</p>
+<p>}</p>
+<p>function toggleMusic() {</p>
+<p>const music = document.getElementById("music");</p>
+<p>if (music.paused) {</p>
+<p>music.play();</p>
+<p>} else {</p>
+<p>music.pause();</p>
+<p>}</p>
+<p>}</p>
+<p>// قلوب متحركة في الخلفية</p>
+<p>const canvas = document.getElementById("hearts");</p>
+<p>const ctx = canvas.getContext("2d");</p>
+<p>let particles = [];</p>
+<p>function resize() {</p>
+<p>canvas.width = window.innerWidth;</p>
+<p>canvas.height = window.innerHeight;</p>
+<p>particles = [];</p>
+<p>for (let i = 0; i &lt; 40; i++) {</p>
+<p>particles.push({<br /> x: Math.random() * canvas.width,<br /> y: Math.random() * canvas.height,<br /> size: Math.random() * 20 + 8,<br /> speed: Math.random() * 1 + 0.3<br /> });</p>
+<p>}</p>
+<p>}</p>
+<p>function animate() {</p>
+<p>ctx.clearRect(0, 0, canvas.width, canvas.height);</p>
+<p>particles.forEach(p =&gt; {</p>
+<p>ctx.globalAlpha = 0.4;</p>
+<p>ctx.fillStyle = "#ff8ac7";</p>
+<p>ctx.font = p.size + "px Arial";</p>
+<p>ctx.fillText("♥", p.x, p.y);</p>
+<p>p.y -= p.speed;</p>
+<p>if (p.y &lt; -20) {</p>
+<p>p.y = canvas.height + 20;</p>
+<p>p.x = Math.random() * canvas.width;</p>
+<p>}</p>
+<p>});</p>
+<p>requestAnimationFrame(animate);</p>
+<p>}</p>
+<p>window.addEventListener("resize", resize);</p>
+<p>resize();</p>
+<p>animate();</p>
+<p>&lt;/script&gt;</p>
+<p style="text-align: right;">&lt;/body&gt;<br />&lt;/html&gt;</p>
